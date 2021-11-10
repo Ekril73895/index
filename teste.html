@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html" charset="utf-8" lang="ru">
+<title>Read File (via AJAX)</title>
+<script type="text/javascript">
+var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
+
+function loadFile() {
+    reader.open('get', 'test2.txt', true); 
+    reader.onreadystatechange = displayContents;
+    reader.send(null);
+    
+    
+}
+    
+
+function displayContents() {
+    if(reader.readyState==4) {
+        var el = document.getElementById('main');
+        
+        el.innerHTML = reader.responseText;
+        console.log(reader.responseText)
+    }
+}
+
+loadFile()
+</script>
+</head>
+<body style = "position: absolute;
+    text-align:left;
+    background:#4169E1;
+    width: 100%;
+    height: 100%;
+    color:white;
+    font-size: 80pt;
+    font-family:Lucida Sans Unicode, Verdana, sans-serif;">
+<div id="container">
+    
+    <div id="main" >
+    </div>
+</div>
+</body>
+</html>
